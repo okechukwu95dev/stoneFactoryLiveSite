@@ -1,519 +1,697 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Stone Brochure</title>
-<style>
-  body {
-    font-family: 'Helvetica Neue', sans-serif;
-    margin: 30px;
-    color: #222;
-    line-height: 1.4;
-  }
-  h1, h2, h3 {
-    margin: 0 0 8px;
-    font-weight: bold;
-  }
-  .header-section {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .header-section h1 {
-    font-size: 2.2em;
-    color: #444;
-  }
-  .header-section p {
-    font-size: 1.2em;
-    color: #666;
-  }
-  .category-section {
-    margin-bottom: 40px;
-  }
-  .category-header {
-    background: #d9d2c9; /* some warm stone-like color */
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-  .category-header h2 {
-    font-size: 1.8em;
-    text-transform: capitalize;
-    color: #444;
-  }
-  .subcategory-header {
-    font-size: 1.3em;
-    margin: 0 0 10px;
-    font-weight: bold;
-    color: #555;
-  }
-  .products-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columns */
-    gap: 20px;
-  }
-  .product-block {
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 15px;
-    background: #fdfdfd;
-    break-inside: avoid;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  .product-title {
-    font-size: 1.2em;
-    margin-bottom: 6px;
-    color: #333;
-  }
-  .product-meta {
-    font-size: 0.9em;
-    color: #777;
-    margin-bottom: 10px;
-  }
-  .description {
-    margin-bottom: 12px;
-    font-size: 0.95em;
-    color: #444;
-  }
-  .app-tags {
-    margin-bottom: 12px;
-  }
-  .app-tags span {
-    background: #e3e3e3;
-    border-radius: 4px;
-    padding: 4px 10px;
-    font-size: 0.85em;
-    margin-right: 5px;
-    margin-top: 5px;
-    display: inline-block;
-  }
-  .images-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .images-row img {
-    max-height: 90px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    object-fit: cover;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etifaq Global Stone Catalog</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            height: 100vh;
+            background-color: #fff;
+        }
+
+        .section-title {
+            font-size: 7rem;
+            font-weight: 300;
+            color: #1a1a1a;
+            opacity: 0.1;
+            position: absolute;
+            top: -2rem;
+            left: -2rem;
+            z-index: 0;
+        }
+
+        .product-card {
+            position: relative;
+            padding: 4rem;
+            margin: 2rem 0;
+            background: #fff;
+        }
+
+        .product-number {
+            font-size: 6rem;
+            font-weight: 300;
+            color: #e5e5e5;
+            margin-bottom: 2rem;
+        }
+
+        .product-title {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .spec-list {
+            border-left: 2px solid #e5e5e5;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #666;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .category-divider {
+            padding: 8rem 4rem;
+            background: white;
+            margin: 4rem 0;
+        }
+
+        .alternating-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+		.divider-number {
+		  display: inline-block;
+		  border: 2px solid #1a1a1a;
+		  padding: 2rem;
+		  margin-bottom: 2rem;
+		  font-size: 2rem;
+		  font-weight: 300;
+		}
+		
+		.marble-section { background: #f5f5f5; }
+		.quartzite-section { background: #e5e5e5; }
+		.travertine-section { background: #d5d5d5; }
+		.granite-section { background: #c5c5c5; }
+    </style>
 </head>
 <body>
+    <!-- Hero Section -->
+    <section class="hero-section grid grid-cols-2">
+        <div class="flex flex-col justify-center p-24">
+            <span class="text-sm tracking-wider text-gray-500 mb-6">EST. 2020</span>
+            <h1 class="text-7xl font-light mb-12">ETIFAQ GLOBAL STONE</h1>
+            <p class="text-xl text-gray-600 leading-relaxed max-w-xl">
+                Where architectural vision meets natural artistry. Discover our curated collection of premium stones, each piece telling a story of geological mastery.
+            </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4 p-8 bg-gray-50">
+            <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-silk-marble/full_1.webp" 
+                alt="Featured marble" class="w-full h-full object-cover">
+            <div class="grid grid-rows-2 gap-4">
+                <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/silver-stream-crystal-quartzite/full_1.webp" 
+                    alt="Featured quartzite" class="w-full h-full object-cover">
+                <img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/renaissance/full_1.webp" 
+                    alt="Featured travertine" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
 
+    <!-- Introduction -->
+    <section class="grid grid-cols-2 bg-gray-50 py-24">
+        <div class="p-24">
+            <h2 class="text-4xl font-light mb-12">Our Legacy</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                For over two decades, we've been bridging the gap between nature's finest materials and architectural innovation. Each stone in our collection represents not just a building material, but a piece of Earth's artistic heritage, carefully selected and curated for contemporary design excellence.
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                From the heart of ancient quarries to modern architectural marvels, our expertise spans continents and centuries of stone craftsmanship. Every piece tells a story of geological wonder, transformed through careful selection and expert curation.
+            </p>
+        </div>
+        <div class="p-24 bg-white">
+            <div class="space-y-12">
+                <div class="border-l-2 border-gray-200 pl-8">
+                    <h3 class="text-6xl font-light mb-4">20+</h3>
+                    <p class="text-gray-500">Years Combined Experience</p>
+                </div>
+                <div class="border-l-2 border-gray-200 pl-8">
+                    <h3 class="text-6xl font-light mb-4">4</h3>
+                    <p class="text-gray-500">Premium Stone Categories</p>
+                </div>
+                <div class="border-l-2 border-gray-200 pl-8">
+                    <h3 class="text-6xl font-light mb-4">∞</h3>
+                    <p class="text-gray-500">Design Possibilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="header-section">
-      <h1>Etifaq Global Stone - Product Brochure</h1>
-      <p>A curated catalog of stone products with better styling</p>
+    <!-- Marble Section -->
+    <div class="category-divider marble-section">
+        <span class="divider-number">1</span>
+        <h2 class="text-4xl font-light mb-8">Marvel of Marble</h2>
+        <p class="text-xl text-gray-600 max-w-4xl">
+            Where nature's artistry meets architectural vision. Each piece in our marble collection represents millions of years of geological mastery, carefully selected to bring timeless elegance to contemporary spaces.
+        </p>
     </div>
-    
 
-        <div class="category-section">
-          <div class="category-header">
-            <h2>Granite</h2>
-          </div>
-        
-<div class='subcategory-header'>Cobblestone</div>
-<div class='products-grid'>
+    <!-- Marble Collection -->
+<section class="marble-collection">
+    <!-- Persian Silk Marble -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">M-01</span>
+                <h3 class="product-title">Persian Silk Marble</h3>
+                <div class="spec-list">
+                    <p>Category: Marble</p>
+                    <p>Type: Persian Collection</p>
+                    <p>Application: Luxury Interiors</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    A masterpiece of natural artistry, where delicate veining creates a visual poetry reminiscent of flowing silk. The stone's distinctive grayish hue, complemented by the dance of white patterns, establishes a perfect harmony with contemporary design aesthetics. Its growing popularity in modern architectural projects stems from its unique ability to bridge classical elegance with Manhattan-inspired contemporary design sensibilities.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-silk-marble/full_1.webp" 
+                         alt="Persian Silk Marble detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-silk-marble/full_1.webp" 
+                         alt="Persian Silk Marble application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">granite cobble</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/granite-cobble/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Granite</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Cobblestone</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-cobble/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-cobble/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-cobble/full_3.webp" alt="image" />
-</div>
-</div>
-</div>
-<div class='subcategory-header'>Slabs</div>
-<div class='products-grid'>
+    <!-- Persian Cream -->
+    <div class="product-card bg-white">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-cream/full_1.webp" 
+                         alt="Persian Cream detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-cream/full_2.webp" 
+                         alt="Persian Cream application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            <div class="product-details">
+                <span class="product-number">M-02</span>
+                <h3 class="product-title">Persian Cream</h3>
+                <div class="spec-list">
+                    <p>Category: Marble</p>
+                    <p>Type: Persian Collection</p>
+                    <p>Application: Interior Spaces</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Embodying the subtle sophistication of classical Persian architecture, Persian Cream marble presents a warm, inviting palette that transforms interior spaces. Its creamy base, enriched with delicate veining, provides the perfect canvas for both traditional and contemporary design expressions. The stone's natural luminosity enhances spatial perception while maintaining an atmosphere of understated luxury.
+                </p>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">GreySardo Granite</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/greysardo-granite/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Granite</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>N/A</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/greysardo-granite/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/greysardo-granite/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/greysardo-granite/full_3.webp" alt="image" />
-</div>
-</div>
-</div>
-<div class='subcategory-header'>Tiles</div>
-<div class='products-grid'>
+    <!-- Persian Portoro Gold -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">M-03</span>
+                <h3 class="product-title">Persian Portoro Gold</h3>
+                <div class="spec-list">
+                    <p>Category: Marble</p>
+                    <p>Type: Persian Collection</p>
+                    <p>Applications: Decoration, Fireplaces, Interior</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    A dramatic interplay of deep tones and golden veining defines this exceptional marble. Persian Portoro Gold stands as a testament to nature's ability to create works of art within stone. Perfect for statement pieces and focal points, this marble transforms ordinary spaces into extraordinary environments. Its rich character makes it particularly suitable for luxury installations where visual impact is paramount.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-portoro-gold/full_1.webp" 
+                         alt="Portoro Gold detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-portoro-gold/full_2.webp" 
+                         alt="Portoro Gold application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">Granite Tile</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/granite-tile/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Granite</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Kitchen</span><span>Making steps</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-tile/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-tile/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-tile/full_3.webp" alt="image" />
-</div>
-</div>
-</div>
-</div>
+    <!-- Armani Grey -->
+    <div class="product-card bg-white">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/armani-grey/full_1.webp" 
+                         alt="Armani Grey detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/armani-grey/full_2.webp" 
+                         alt="Armani Grey application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            <div class="product-details">
+                <span class="product-number">M-04</span>
+                <h3 class="product-title">Armani Grey</h3>
+                <div class="spec-list">
+                    <p>Category: Marble</p>
+                    <p>Type: Premium Selection</p>
+                    <p>Applications: Decoration, Fireplaces, Interior</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Distinguished by its intricate white veining against a sophisticated grey backdrop, Armani Grey marble represents the pinnacle of contemporary natural stone design. Its book-matching capabilities create mesmerizing patterns that elevate architectural spaces to new heights of elegance. The stone's durability and water-resistant properties make it exceptionally versatile, suitable for everything from bathroom surfaces to grand architectural statements.
+                </p>
+            </div>
+        </div>
+    </div>
 
-        <div class="category-section">
-          <div class="category-header">
-            <h2>Marble</h2>
-          </div>
-        
-<div class='subcategory-header'>Others</div>
-<div class='products-grid'>
+    <!-- Camilia Marble -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">M-05</span>
+                <h3 class="product-title">Camilia Marble</h3>
+                <div class="spec-list">
+                    <p>Category: Marble</p>
+                    <p>Type: Premium Selection</p>
+                    <p>Application: Interior Excellence</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Camilia Marble presents an enchanting fusion of light brown and orange linear patterns set against a pristine creamy canvas. Its robust structural integrity combines with exquisite aesthetics to create a versatile material perfect for diverse interior applications. The stone's unique coloration adds warmth and character to spaces while maintaining an air of sophisticated refinement.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/camilia-marble/full_1.webp" 
+                         alt="Camilia Marble detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/camilia-marble/full_2.webp" 
+                         alt="Camilia Marble application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">Armani grey</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/armani-grey/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Marble</div>
-                  <div class="description">Armani Grey: Armani Grey marble is a high-quality natural stone recognized for its durability, distinctive patterns, and shades.<br/>The amazing beauty of busy white lines in Armani grey generating a complex design by book matching and four matching the patterns can be observed at times, and the stone shows off her beauty with the distinctive colour and shade at other times.<br/>Armani grey is a long-lasting and water-resistant material often used for bathroom countertops, tiles, and flooring. However, if you intend to use this stone for exterior cladding and landscaping, it is critical to properly seal and preserve it to prevent stains and moisture damage.<br/>It is critical to note that Armani Grey is an ideal option for high-volume projects; in regarding to Iran’s massive mines, we can assure that every quantity is acceptable.<br/>Armani Grey comes in different grades and categories, factors such as the number of flowers on the stone and the amount of colour saturation will be analyzed. It goes without saying that at Etifaq Global, you can obtain the highest quality at the greatest pricing for this stone.</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Decoration</span><span>fireplaces</span><span>Interior</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/armani-grey/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/armani-grey/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/armani-grey/full_3.webp" alt="image" />
-</div>
-</div>
+    <!-- Spider Marble -->
+    <div class="product-card bg-white">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/spider/full_1.webp" 
+                         alt="Spider Marble detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/spider/full_2.webp" 
+                         alt="Spider Marble application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            <div class="product-details">
+                <span class="product-number">M-06</span>
+                <h3 class="product-title">Spider Marble</h3>
+                <div class="spec-list">
+                    <p>Category: Marble</p>
+                    <p>Type: Specialty Collection</p>
+                    <p>Application: Interior Statements</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Named for its distinctive web-like veining patterns, Spider Marble creates captivating visual narratives within interior spaces. Its unique characteristics shine particularly brilliantly in book-matched installations, where the natural patterns mirror each other to create stunning symmetrical designs. This stone stands as a testament to nature's artistic capabilities, perfect for creating memorable architectural features.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <div class="product-block">
-                  <div class="product-title">Camilia Marble</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/camilia-marble/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Marble</div>
-                  <div class="description">The light brown and orange lines on a creamy Canvas representing the beauty of Iranian marble. This marble is a fantastic option for any interior application, including floors, walls, etc. since it is not only exquisitely designed but also has a highly strong and bony structure.</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Interior</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/camilia-marble/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/camilia-marble/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/camilia-marble/full_3.webp" alt="image" />
-</div>
-</div>
 
-                <div class="product-block">
-                  <div class="product-title">Spider</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/spider/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Marble</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Interior</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/spider/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/spider/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/spider/full_3.webp" alt="image" />
-</div>
-</div>
-</div>
-<div class='subcategory-header'>Persian</div>
-<div class='products-grid'>
-
-                <div class="product-block">
-                  <div class="product-title">persian cream</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/persian-cream/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Marble</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Interior</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-cream/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-cream/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-cream/full_3.webp" alt="image" />
-</div>
-</div>
-
-                <div class="product-block">
-                  <div class="product-title">Persian Silk Marble</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/persian-silk-marble/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Marble</div>
-                  <div class="description">As the name indicates a delicate beauty of Iranian nature. As much as the term “silk” implies delicate elegance, the substance is one of the most resilient among marbles. The stone’s grayish hue contributes to its appeal. You may discover White and Grey dancing, making this tone excellent for harmonizing with the majority of the designs. This material is rapidly capturing popularity for grey inquiry inspired by Manhattan design and modern design.</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>N/A</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-silk-marble/full_1.webp" alt="image" />
-</div>
-</div>
-
-                <div class="product-block">
-                  <div class="product-title">Persian Portoro Gold</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/marble-portoro/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Marble</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Decoration</span><span>fireplaces</span><span>Interior</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-portoro-gold/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-portoro-gold/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/marble/persian-portoro-gold/full_3.webp" alt="image" />
-</div>
-</div>
-</div>
+<!-- Quartzite Section -->
+<div class="category-divider quartzite-section">
+    <span class="divider-number">2</span>
+    <h2 class="text-4xl font-light mb-8">Quartzite Excellence</h2>
+    <p class="text-xl text-gray-600 max-w-4xl">
+        Where strength meets sublime beauty. Our quartzite collection represents the perfect fusion of durability and sophisticated aesthetics, offering architects and designers a palette that combines uncompromising performance with refined visual appeal.
+    </p>
 </div>
 
-        <div class="category-section">
-          <div class="category-header">
-            <h2>Quartzite</h2>
-          </div>
-        
-<div class='subcategory-header'>Crystal</div>
-<div class='products-grid'>
+<!-- Quartzite Collection -->
+<section class="quartzite-collection">
+    <!-- Silver Stream Crystal Quartzite -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">Q-01</span>
+                <h3 class="product-title">Silver Stream Crystal Quartzite</h3>
+                <div class="spec-list">
+                    <p>Category: Quartzite</p>
+                    <p>Type: Crystal Collection</p>
+                    <p>Applications: Decoration, Interior, Steps</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    A masterpiece of geological transformation, Silver Stream Crystal Quartzite presents an outstanding blend of deep and light grayish tones reminiscent of twilight shadows. Its crystalline structure creates an enchanting play of light, while its exceptional technical properties - including superior sandability and remarkable compressive strength - make it a preferred choice for prestigious architectural projects. The stone's book-matching capabilities reveal stunning symmetrical patterns, elevating it beyond mere building material to architectural art.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/silver-stream-crystal-quartzite/full_1.webp" 
+                         alt="Silver Stream detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/silver-stream-crystal-quartzite/full_2.webp" 
+                         alt="Silver Stream application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">Silver Stream Crystal Quartzite</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/silver-stream-crystal-quartzite/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Quartzite</div>
-                  <div class="description">Silver Stream crystal quartzite is an outstanding blend ofdeep and light grayish colours, so named because itresembles the famous Twilight Stone. This crystalquartzite has excellent sandability, compressive andabrasion resistance, and its book match and four matchdesigns are particularly appealing because to theirdistinctive and colorful patterns. These stones are turnedinto big size slabs to highlight their full brilliance.<br/>The outstanding quality and beauty of Silver Stream slabstone, when compared to other similar local and foreignstones, has led designers and engineers to include it intonumerous residential, office, commercial, and luxuryprojects.</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Decoration</span><span>Interior</span><span>Making steps</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/silver-stream-crystal-quartzite/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/silver-stream-crystal-quartzite/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/silver-stream-crystal-quartzite/full_3.webp" alt="image" />
-</div>
-</div>
+    <!-- Riverlight Crystal Quartzite -->
+    <div class="product-card bg-white">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/riverlight-crystal-quartzite/full_1.webp" 
+                         alt="Riverlight detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/riverlight-crystal-quartzite/full_2.webp" 
+                         alt="Riverlight application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            <div class="product-details">
+                <span class="product-number">Q-02</span>
+                <h3 class="product-title">Riverlight Crystal Quartzite</h3>
+                <div class="spec-list">
+                    <p>Category: Quartzite</p>
+                    <p>Type: Crystal Collection</p>
+                    <p>Applications: Decoration, Interior, Steps</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Among the earliest materials available in the Iranian market, Riverlight Crystal Quartzite stands as a testament to enduring elegance. Its pristine white backdrop, animated by dynamic black and gray veining, creates a natural artwork that enhances any architectural setting. Particularly striking in vanity designs and feature walls, its versatility extends to both intimate spaces and grand architectural statements. The stone's natural luminosity and distinctive patterning make it an exceptional choice for book-matching applications.
+                </p>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">Riverlight Crystal Quartzite</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/riverlight-quartzite/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Quartzite</div>
-                  <div class="description">among the earliest materials available on the Iranian market.<br/>The backdrop of the Riverlight Crystal Quartzite stone is white, with erratic black and gray lines. Owing to its amazing patterns, this stone may be used for any interior application, including vanity design, book matching behind TV sets, and countertops.</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Decoration</span><span>Interior</span><span>Making steps</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/riverlight-crystal-quartzite/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/riverlight-crystal-quartzite/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/riverlight-crystal-quartzite/full_3.webp" alt="image" />
-</div>
-</div>
-</div>
-<div class='subcategory-header'>Others</div>
-<div class='products-grid'>
+    <!-- Arab Escato -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">Q-03</span>
+                <h3 class="product-title">Arab Escato</h3>
+                <div class="spec-list">
+                    <p>Category: Quartzite</p>
+                    <p>Type: Premium Selection</p>
+                    <p>Applications: Decoration, Interior, Kitchen</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Arab Escato quartzite exemplifies the perfect balance between natural beauty and functional excellence. Its sophisticated patterning and robust composition make it particularly well-suited for high-traffic areas that demand both aesthetic refinement and durability. The stone's versatile character allows it to seamlessly integrate into various design contexts, from contemporary kitchen environments to elaborate decorative installations, always maintaining its distinctive presence while harmonizing with surrounding elements.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/arab-escato/full_1.webp" 
+                         alt="Arab Escato detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/arab-escato/full_1.webp" 
+                         alt="Arab Escato application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">Arab escato</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/arab-escato/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Quartzite</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Decoration</span><span>Interior</span><span>Kitchen</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/arab-escato/full_1.webp" alt="image" />
-</div>
-</div>
+    <!-- Mont Blanc -->
+    <div class="product-card bg-white">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/mont-blanc/full_1.webp" 
+                         alt="Mont Blanc detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/mont-blanc/full_2.webp" 
+                         alt="Mont Blanc application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            <div class="product-details">
+                <span class="product-number">Q-04</span>
+                <h3 class="product-title">Mont Blanc</h3>
+                <div class="spec-list">
+                    <p>Category: Quartzite</p>
+                    <p>Type: Premium Selection</p>
+                    <p>Application: Interior Excellence</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Named after Europe's highest peak, Mont Blanc quartzite embodies the same majestic presence as its namesake. Its crystalline structure creates a unique interplay of light and shadow, producing surfaces that seem to capture the essence of alpine glaciers. The stone's exceptional book-matching capabilities allow for the creation of stunning mirror-image patterns, perfect for creating dramatic feature walls and sophisticated interior installations that demand both presence and refinement.
+                </p>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">Mont blanc</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/mont-blanc/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Quartzite</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Interior</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/mont-blanc/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/mont-blanc/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/mont-blanc/full_3.webp" alt="image" />
-</div>
-</div>
+    <!-- Quartzite Cheetah -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">Q-05</span>
+                <h3 class="product-title">Quartzite Cheetah</h3>
+                <div class="spec-list">
+                    <p>Category: Quartzite</p>
+                    <p>Type: Specialty Collection</p>
+                    <p>Application: Interior Statements</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    As dynamic as its namesake, Quartzite Cheetah captures the essence of untamed beauty in stone form. Its distinctive spotted patterning creates surfaces that command attention while maintaining sophisticated restraint. The natural variation in its markings ensures that each installation is unique, offering designers the opportunity to create truly one-of-a-kind interior spaces. This exceptional stone combines the durability characteristic of quartzite with an aesthetic that brings natural drama to architectural compositions.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/quartzite-cheetah/full_1.webp" 
+                         alt="Quartzite Cheetah detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/quartzite-cheetah/full_2.webp" 
+                         alt="Quartzite Cheetah application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <div class="product-block">
-                  <div class="product-title">Quartzite Cheetah</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/quartzite-cheetah/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Quartzite</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Interior</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/quartzite-cheetah/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/quartzite/quartzite-cheetah/full_2.webp" alt="image" />
-</div>
-</div>
-</div>
-</div>
 
-        <div class="category-section">
-          <div class="category-header">
-            <h2>Travertine</h2>
-          </div>
-        
-<div class='subcategory-header'>Cross Cut</div>
-<div class='products-grid'>
 
-                <div class="product-block">
-                  <div class="product-title">Romano Travertine</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/romano-travertine/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> cross cut</div>
-                  <div class="description">The signature of the Travertine family! If you ask a stone expert to imagine Travertine, the first thing they will think of is beige travertine. Beige travertine, the most dependable and efficient travertine for large-scale projects, may be found in some locations around the globe, including Iran, Turkey, and Italy. Regardless of the hue or quality of the material, beige travertine cost is highly reliant on the location of the mine. So we recommend doing extra research before purchasing the final goods.</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Facade</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/cross-cut/romano-travertine/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/cross-cut/romano-travertine/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/cross-cut/romano-travertine/full_3.webp" alt="image" />
-</div>
-</div>
-</div>
-<div class='subcategory-header'>Others</div>
-<div class='products-grid'>
-
-                <div class="product-block">
-                  <div class="product-title">Light Silver Travertine</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/light-silver-travertine/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Travertine</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>N/A</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/light-silver-travertine/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/light-silver-travertine/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/light-silver-travertine/full_3.webp" alt="image" />
-</div>
-</div>
-
-                <div class="product-block">
-                  <div class="product-title">Mocha Silver Travertine</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/mocha-silver-travertine/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Travertine</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>N/A</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/mocha-silver-travertine/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/mocha-silver-travertine/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/mocha-silver-travertine/full_3.webp" alt="image" />
-</div>
+<!-- Travertine Section -->
+<div class="category-divider travertine-section">
+    <span class="divider-number">3</span>
+    <h2 class="text-4xl font-light mb-8">Timeless Travertine</h2>
+    <p class="text-xl text-gray-600 max-w-4xl">
+        An enduring testament to classical architecture, reimagined for contemporary design. Our travertine collection bridges millennia of architectural heritage with modern functionality, offering a material that has shaped civilizations and continues to define cutting-edge spaces.
+    </p>
 </div>
 
-                <div class="product-block">
-                  <div class="product-title">Renaissance</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/renaissance/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> Travertine</div>
-                  <div class="description">When it comes to Renaissance Travertine, everyone who has worked in the stone industry is familiar with this pure work of nature. If you want the strongest travertine on the planet, or the whitest travertine on the planet, you should look for Renaissance Travertine in Iran. Renaissance travertine has the fewest holes of all travertines. It also comes in a variety of designs, including straight and circular veins. Straight veins create the popular travertine look, while wavey veins make excellent book-matches. And delivers a unique and unseen design which resembles a masterpiece.<br/>Bright colors like white, light cream, or light beige are currently in high demand for facades and cladding in the United Arab Emirates. Because of the climate, it is best to use travertine so you never have to worry about color changes. When compared to other natural stones like marbles like Thassos or other white marbles, travertine can be the whitest natural stone used for exterior cladding because marbles are highly sensitive to sunlight and will lose their gloss and whiteness after a brief period of time if used for exterior cladding.</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Facade</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/renaissance/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/renaissance/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/renaissance/full_3.webp" alt="image" />
-</div>
-</div>
-</div>
-<div class='subcategory-header'>Vein Cut</div>
-<div class='products-grid'>
+<!-- Travertine Collection -->
+<section class="travertine-collection">
+    <!-- Romano Travertine -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">T-01</span>
+                <h3 class="product-title">Romano Travertine</h3>
+                <div class="spec-list">
+                    <p>Category: Travertine</p>
+                    <p>Type: Cross Cut</p>
+                    <p>Application: Facade</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    The quintessential expression of travertine excellence, Romano stands as the archetype that defines the entire family. Its warm beige tones embody the timeless elegance that has graced architecture from ancient Rome to contemporary design. Sourced from premium quarries across Iran, Turkey, and Italy, this stone offers unmatched dependability for large-scale architectural projects. Each slab tells a story of geological precision, offering consistent quality that makes it the definitive choice for significant architectural endeavors.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/cross-cut/romano-travertine/full_1.webp" 
+                         alt="Romano Travertine detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/cross-cut/romano-travertine/full_2.webp" 
+                         alt="Romano Travertine application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">Dark Nooche Travertine</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/dark-nooche-travertine/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> vein cut</div>
-                  <div class="description">Dark Noche Travertine:<br/>Honey, or Stone? This beautiful honey-colored travertine is one of the most popular stones in the world. This stone is a popular option due to its distinct hue, which resembles caramel and honey. Also, if your inquiry is a considerable quantity, you may purely depend on noche travertine because there are limitless mines of this beauty, which also can make this material to be budget friendly. Dark Noche can either come in a very dark shade or very light colour like honey or caramel both can make unique and fantastic designs. Depending on the application, you may use the lighter type, which resembles honey precisely, or the darker type, which resembles brown caramel.</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Facade</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/dark-nooche-travertine/full_1.webp" alt="image" />
-</div>
+    <!-- Dark Nooche Travertine -->
+    <div class="product-card bg-white">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/dark-nooche-travertine/full_1.webp" 
+                         alt="Dark Nooche detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/dark-nooche-travertine/full_1.webp" 
+                         alt="Dark Nooche application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            <div class="product-details">
+                <span class="product-number">T-02</span>
+                <h3 class="product-title">Dark Nooche Travertine</h3>
+                <div class="spec-list">
+                    <p>Category: Travertine</p>
+                    <p>Type: Vein Cut</p>
+                    <p>Application: Facade</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Dark Nooche Travertine presents a captivating study in natural variation, ranging from deep honey to rich caramel tones. This versatile stone offers two distinct personalities: a lighter variation that captures the warmth of natural honey, and a darker interpretation that evokes the depth of aged caramel. Its abundance in nature makes it an excellent choice for large-scale projects, while its distinctive coloring ensures each installation maintains unique character. The stone's reliability and aesthetic versatility make it a favored choice for projects where budget consciousness meets design ambition.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dark Silver Travertine -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">T-03</span>
+                <h3 class="product-title">Dark Silver Travertine</h3>
+                <div class="spec-list">
+                    <p>Category: Travertine</p>
+                    <p>Type: Vein Cut</p>
+                    <p>Application: Facade</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    A masterwork of natural contrasts, Dark Silver Travertine features a smoky backdrop punctuated by stunning waves of light and dark patterns. Distinguished by its remarkable transparency and exceptional resistance to environmental factors, this stone maintains its striking appearance even under intense sunlight exposure. Its natural veining creates rhythmic patterns that transform exterior cladding into dynamic architectural compositions. The stone's technical excellence, combined with its visual sophistication, makes it particularly well-suited for creating landmark facades.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/dark-silver-travertine/full_1.webp" 
+                         alt="Dark Silver detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/dark-silver-travertine/full_2.webp" 
+                         alt="Dark Silver application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Light Silver Travertine -->
+    <div class="product-card bg-white">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/light-silver-travertine/full_1.webp" 
+                         alt="Light Silver detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/light-silver-travertine/full_2.webp" 
+                         alt="Light Silver application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            <div class="product-details">
+                <span class="product-number">T-04</span>
+                <h3 class="product-title">Light Silver Travertine</h3>
+                <div class="spec-list">
+                    <p>Category: Travertine</p>
+                    <p>Type: Premium Selection</p>
+                    <p>Application: Multi-Purpose</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Light Silver Travertine offers a sophisticated interpretation of classical travertine aesthetics. Its lighter tonality creates bright, open spaces while maintaining the material's characteristic depth and texture. Perfect for contemporary architectural applications where traditional travertine patterns need a modern twist, this stone brings luminosity to spaces while ensuring durability. Its refined appearance makes it particularly suitable for projects that demand a balance between classical inspiration and contemporary execution.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Renaissance Travertine -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">T-05</span>
+                <h3 class="product-title">Renaissance Travertine</h3>
+                <div class="spec-list">
+                    <p>Category: Travertine</p>
+                    <p>Type: Premium Selection</p>
+                    <p>Application: Facade Excellence</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    The pinnacle of travertine evolution, Renaissance represents nature's perfection refined through geological mastery. Distinguished as both the strongest and whitest travertine available, it sets new standards for architectural stone. Its remarkably low porosity and diverse veining patterns - from straight lines to dynamic waves - create opportunities for stunning book-matched installations. Particularly valued in the UAE's climate-sensitive environment, it maintains its pristine appearance where other stones might falter, making it the definitive choice for prestigious exterior applications requiring both durability and elegance.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/renaissance/full_1.webp" 
+                         alt="Renaissance detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/travertine/renaissance/full_2.webp" 
+                         alt="Renaissance application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Granite Section -->
+<div class="category-divider granite-section">
+    <span class="divider-number">04</span>
+    <h2 class="text-4xl font-light mb-8">Granite Innovation</h2>
+    <p class="text-xl text-gray-600 max-w-4xl">
+        Where enduring strength meets contemporary refinement. Our granite collection represents the perfect synthesis of natural durability and design sophistication, offering architects and designers a material palette that commands presence while ensuring generational longevity.
+    </p>
 </div>
 
-                <div class="product-block">
-                  <div class="product-title">Dark Silver Travertine</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/dark-silver-travertine/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> vein cut</div>
-                  <div class="description">It features a smoky backdrop of light and dark black and tan with white streaks that reveal stunning waves. The Dark Silver travertine has several characteristics, including great transparency, strong resistance to abrasion, and unchanging color when exposed to sunshine. Owing to its qualities, this travertine is often applied for external cladding to create really gorgeous layouts.</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Facade</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/dark-silver-travertine/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/dark-silver-travertine/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/dark-silver-travertine/full_3.webp" alt="image" />
-</div>
-</div>
+<!-- Granite Collection -->
+<section class="granite-collection">
+    <!-- Granite Tile -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">G-01</span>
+                <h3 class="product-title">White Granite Tile</h3>
+                <div class="spec-list">
+                    <p>Category: Granite</p>
+                    <p>Type: Architectural Tiles</p>
+                    <p>Applications: Kitchen, Making Steps</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Precision-engineered for versatility, our White Granite tiles exemplify the marriage of functionality and refined aesthetics. Each tile is crafted to capture the material's inherent crystalline structure while maintaining consistent coloration and pattern distribution. The result is a surface that brings both grandeur and practicality to high-traffic areas. Perfect for creating seamless transitions between spaces, these tiles offer the durability of granite in a format that allows for creative installation patterns and refined architectural expressions.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-tile/full_1.webp" 
+                         alt="White Granite detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-tile/full_2.webp" 
+                         alt="White Granite application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="product-block">
-                  <div class="product-title">Titanium Silver Travertine</div>
-                  <div class="product-meta"><strong>Source URL:</strong> https://www.etifaqglobalstone.com/product/titanium-silver-travertine/</div>
-                  <div class="product-meta"><strong>Site Category:</strong> vein cut</div>
-                  <div class="description">No description available</div>
-                  <div class="app-tags">
-                    <strong>Applications:</strong><br/>
-                    <span>Facade</span>
-                  </div>
-                  <div class="images-row">
-                
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/titanium-silver-travertine/full_1.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/titanium-silver-travertine/full_2.webp" alt="image" />
-<img src="https://okechukwu95dev.github.io/stoneFactory/images/vein-cut/titanium-silver-travertine/full_3.webp" alt="image" />
-</div>
-</div>
-</div>
-</div>
-</body></html>
+    <!-- Granite Cobble -->
+    <div class="product-card bg-white">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-cobble/full_1.webp" 
+                         alt="Granite Cobble detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/granite-cobble/full_2.webp" 
+                         alt="Granite Cobble application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            <div class="product-details">
+                <span class="product-number">G-02</span>
+                <h3 class="product-title">White Granite Cobblestone</h3>
+                <div class="spec-list">
+                    <p>Category: Granite</p>
+                    <p>Type: Cobblestone</p>
+                    <p>Application: Urban Landscaping</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Our Granite Cobblestone collection reimagines traditional urban elements through a lens of contemporary design sensibility. Each piece is meticulously crafted to maintain the timeless character of historical cobblestones while meeting modern installation requirements. The natural crystalline structure of granite provides unparalleled durability, ensuring these elements withstand both time and elements while developing a rich patina that only enhances their architectural value. Ideal for creating sophisticated exterior spaces that honor historical precedent while embracing contemporary functionality.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GreySardo Granite -->
+    <div class="product-card">
+        <div class="grid grid-cols-2 gap-16">
+            <div class="product-details">
+                <span class="product-number">G-03</span>
+                <h3 class="product-title">GreySardo Granite</h3>
+                <div class="spec-list">
+                    <p>Category: Granite</p>
+                    <p>Type: Premium Slabs</p>
+                    <p>Application: Multi-Purpose</p>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    GreySardo Granite stands as a testament to refined architectural minimalism. Its consistent, medium-grained structure creates surfaces of remarkable visual consistency while maintaining the material's characteristic strength. The stone's neutral grey palette provides a sophisticated foundation for contemporary design, making it particularly valuable in projects where material longevity must coexist with aesthetic restraint. Each slab exhibits the perfect balance between visual interest and design versatility, allowing it to serve as either a subtle background element or a featured architectural component.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8">
+                <div class="image-grid">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/greysardo-granite/full_1.webp" 
+                         alt="GreySardo detail" class="w-full h-64 object-cover">
+                    <img src="https://okechukwu95dev.github.io/stoneFactory/images/granite/greysardo-granite/full_2.webp" 
+                         alt="GreySardo application" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
